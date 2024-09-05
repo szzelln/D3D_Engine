@@ -1,0 +1,59 @@
+#pragma once
+
+template <typename T>
+void SAFE_RELEASE(T* p)
+{
+	if (p)
+	{
+		p->Release();
+		p = nullptr;
+	}
+}
+
+template <typename T>
+void SAFE_DELETE(T* p)
+{
+	if (p)
+	{
+		delete p;
+		p = nullptr;
+	}
+}
+
+#define LOG_WARNING(...) \
+{ \
+    wchar_t buffer[256]; \
+    swprintf_s(buffer,256, L"%s:%d - ", __FUNCTIONW__, __LINE__); \
+    wchar_t message[256]; \
+    swprintf_s(message,256, __VA_ARGS__); \
+    wcscat_s(buffer, message); \
+    wcscat_s(buffer, L"\n"); \
+    OutputDebugString(buffer); \
+}
+
+// Helper class for COM exceptions
+class com_exception : public std::exception
+{
+public:
+	com_exception(HRESULT hr) : result(hr) {}
+
+	const char* what() const noexcept override
+	{
+		static char s_str[64] = {};
+		sprintf_s(s_str, "Failure with HRESULT of %08X",
+			static_cast<unsigned int>(result));
+		return s_str;
+	}
+
+private:
+	HRESULT result;
+};
+
+// Helper utility converts D3D API failures into exceptions.
+inline void HR_T(HRESULT hr)
+{
+	if (FAILED(hr))
+	{
+		throw com_exception(hr);
+	}
+}

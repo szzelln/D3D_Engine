@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{7e77c3be-e239-4d17-9fdf-4e5cf790462e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{3a1ee633-003d-4548-81c5-b832416a27b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tool">
+      <UniqueIdentifier>{514d5822-1061-49d8-aff3-3cefe8394b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tool\TSingleton">
+      <UniqueIdentifier>{15a5dbb6-405b-4753-abdd-4593fc3c6273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{5b7a535f-235c-466c-922b-372074ed0b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\header">
+      <UniqueIdentifier>{a0d6f400-86b8-4672-a77b-597e7376cd33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Input">
+      <UniqueIdentifier>{a8d0b0f3-4afa-4f0d-9648-4d2a1000f649}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Input\Mouse">
+      <UniqueIdentifier>{e6fc4ebf-1bbc-401b-841b-3e84c1b99d49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Input\KeyBoard">
+      <UniqueIdentifier>{e1d6ba88-1dd9-4ab4-a2e7-7d82d2dd796f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Time">
+      <UniqueIdentifier>{9aaf4fb5-ab19-4f58-998e-0e5a60e7bc9c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\GameApp.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\KeyBoard\Keyboard_InputSystem.h">
+      <Filter>System\Input\KeyBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Mouse\Mouse_InputSystem.h">
+      <Filter>System\Input\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Engine\header</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool\TSingleton.h">
+      <Filter>Tool\TSingleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Renderer.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Time\TimeSystem.h">
+      <Filter>System\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool\Helper.h">
+      <Filter>Engine\header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\GameApp.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\KeyBoard\Keyboard_InputSystem.cpp">
+      <Filter>System\Input\KeyBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Mouse\Mouse_InputSystem.cpp">
+      <Filter>System\Input\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Engine\header</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\Renderer.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Time\TimeSystem.cpp">
+      <Filter>System\Time</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
