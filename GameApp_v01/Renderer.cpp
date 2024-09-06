@@ -131,6 +131,11 @@ void Renderer::SetViewport()
 
 
 // ========== 임시 (나중에 Scene으로 분리 해야함)  ==========
+
+	// 1. Render() 에서 파이프라인에 바인딩할 버텍스 버퍼및 버퍼 정보 준비
+	// 2. Render() 에서 파이프라인에 바인딩할 InputLayout 생성 	
+	// 3. Render() 에서 파이프라인에 바인딩할  버텍스 셰이더 생성
+	// 4. Render() 에서 파이프라인에 바인딩할 픽셀 셰이더 생성
 bool Renderer::InitScene()
 {
 	HRESULT hr = 0; // 결과값.
@@ -148,21 +153,22 @@ bool Renderer::InitScene()
 	//   |     /         `      |   |
 	//	 |   v0-----------v2    |  /
 	// (-1,-1,0)-------------(1,-1,0)
-	Vertex vertices[] = // x,y,z
+	Vertex vertices[] = // Vector3(x, y, z), Vector4(R, G, B, A)
 	{
-		Vector3(-0.5,-0.5,0.5), // v0    
-		Vector3(0,0.5,0.5),		// v1    
-		Vector3(0.5,-0.5,0.5),	// v2		
+		Vertex(Vector3(0.0f,  0.5f, 0.5f), Vector4(0.6f, 0.8f, 0.9f, 1.0f)),	// v0
+		Vertex(Vector3(0.5f, -0.5f, 0.5f), Vector4(1.0f, 0.7f, 0.9f, 1.0f)),	// v1
+		Vertex(Vector3(-0.5f, -0.5f, 0.5f), Vector4(0.9f, 0.9f, 0.9f, 1.0f))	// v2	
 	};
+
+	m_VertexCount = ARRAYSIZE(vertices);	// 정점의 수
 
 	// 버퍼 설정
 	D3D11_BUFFER_DESC vbDesc = {};
-	m_VertexCount = ARRAYSIZE(vertices);	// 정점의 수
-	vbDesc.ByteWidth = sizeof(Vertex) * m_VertexCount; // 버텍스 버퍼의 크기(Byte).
-	vbDesc.CPUAccessFlags = 0;
-	vbDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER; // 정점 버퍼로 사용.
-	vbDesc.MiscFlags = 0;
+	vbDesc.ByteWidth = sizeof(Vertex) * m_VertexCount;	// 버텍스 버퍼의 크기(Byte).
 	vbDesc.Usage = D3D11_USAGE_DEFAULT;	// CPU는 접근불가 ,  GPU에서 읽기/쓰기 가능한 버퍼로 생성.
+	vbDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;		// 정점 버퍼로 사용.
+	vbDesc.CPUAccessFlags = 0;							// Obj가 실시간으로 움직이면 CPU에 접근해야 되서 0이 아닌 다른 값을 넣어야 한다.
+	vbDesc.MiscFlags = 0;
 
 	// 정점 버퍼 생성.
 	D3D11_SUBRESOURCE_DATA vbData = {};
@@ -176,7 +182,8 @@ bool Renderer::InitScene()
 	// 2. Render() 에서 파이프라인에 바인딩할 InputLayout 생성 	
 	D3D11_INPUT_ELEMENT_DESC layout[] =  // 인풋 레이아웃은 버텍스 쉐이더가 입력받을 데이터의 형식을 지정한다.
 	{// SemanticName , SemanticIndex , Format , InputSlot , AlignedByteOffset , InputSlotClass , InstanceDataStepRate		
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },	 // 4byte * 3 = 12byte 다음의 데이터는 12byte 떨어짐.
+		{ "COLOR",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 } // 12 대신 D3D11_APPEND_ALIGNED_ELEMENT 사용 가능.
 	};
 
 	ID3DBlob* vertexShaderBuffer = nullptr;
@@ -187,7 +194,7 @@ bool Renderer::InitScene()
 	// 3. Render에서 파이프라인에 바인딩할  버텍스 셰이더 생성
 	HR_T(m_pDevice->CreateVertexShader(vertexShaderBuffer->GetBufferPointer(),
 		vertexShaderBuffer->GetBufferSize(), NULL, &m_pVertexShader));
-	SAFE_RELEASE(vertexShaderBuffer);
+	SAFE_RELEASE(vertexShaderBuffer);	// 버퍼 더이상 필요없음.
 
 
 	// 4. Render에서 파이프라인에 바인딩할 픽셀 셰이더 생성
@@ -196,7 +203,7 @@ bool Renderer::InitScene()
 	HR_T(m_pDevice->CreatePixelShader(
 		pixelShaderBuffer->GetBufferPointer(),
 		pixelShaderBuffer->GetBufferSize(), NULL, &m_pPixelShader));
-	SAFE_RELEASE(pixelShaderBuffer);
+	SAFE_RELEASE(pixelShaderBuffer);	// 버퍼 더이상 필요없음.
 
 	return true;
 }
