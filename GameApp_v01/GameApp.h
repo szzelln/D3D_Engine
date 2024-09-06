@@ -1,6 +1,6 @@
 #pragma once
-#include "../pch.h"
-#include "../Render/Renderer.h"
+#include "pch.h"
+#include "Renderer.h"
 
 class GameApp
 {

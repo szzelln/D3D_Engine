@@ -13,17 +13,18 @@
 using namespace std;
 
 // 내가 만든 헤더
-#include "Tool/Helper.h"
-
+#include "Helper.h"
+#include "Define.h"
 
 // D2D
 #include "d2d1helper.h"		// 나중에 simplemath 에 있는 걸로 사용하자
 
 // D3D
 #include <d3d11.h>
+#include <d3dcompiler.h>
 
 #include <directxtk/simplemath.h>							// 수학 연산을 단순화하는 클래스들을 제공
-// using namespace DirectX::SimpleMath;
+using namespace DirectX::SimpleMath;
 
 #pragma comment(lib, "d3d11.lib")							// Direct3D 11 라이브러리
 #pragma comment(lib, "d3dcompiler.lib")						// Direct3D 컴파일러 라이브러리(Direct3D 셰이더 코드(HLSL)를 컴파일하는 데 사용)

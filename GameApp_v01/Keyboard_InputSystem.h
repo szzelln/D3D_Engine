@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Tool/TSingleton.h"
+#include "TSingleton.h"
 
 class Keyboard_InputSystem : public TSingleton<Keyboard_InputSystem>
 {

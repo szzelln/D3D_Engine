@@ -1,6 +1,6 @@
-#include "../../pch.h"
+#include "pch.h"
 #include "Mouse_InputSystem.h"
-#include "../../Engine/GameApp.h"
+#include "GameApp.h"
 
 void Mouse_InputSystem::Init()
 {
@@ -121,3 +121,4 @@ bool Mouse_InputSystem::RMouseClickUp(D2D1_POINT_2F& _objPos)
 
 	return false;
 }
+

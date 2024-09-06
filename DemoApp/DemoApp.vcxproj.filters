@@ -11,9 +11,12 @@
     <Filter Include="Engine\header">
       <UniqueIdentifier>{a6bad163-e466-48f2-b095-e843614748df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{915a56fe-cf9c-4a67-9ab5-c8198f8c0bdc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="System\DemoApp.h">
+    <ClInclude Include="DemoApp.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
@@ -21,7 +24,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="System\DemoApp.cpp">
+    <ClCompile Include="DemoApp.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -29,16 +32,24 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="etc\DemoApp.rc">
+    <ResourceCompile Include="DemoApp.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="etc\small.ico">
+    <Image Include="small.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="etc\DemoApp.ico">
+    <Image Include="DemoApp.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="BasicPixelShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="BasicVertexShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

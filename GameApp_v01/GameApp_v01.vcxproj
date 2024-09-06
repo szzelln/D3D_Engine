@@ -70,12 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(ProjectDir);$(ExternalIncludePath)</ExternalIncludePath>
-    <ReferencePath>$(ProjectDir);$(ReferencePath)</ReferencePath>
-    <LibraryPath>$(ProjectDir)Library\;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -116,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -145,27 +139,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Tool\Helper.h" />
-    <ClInclude Include="Engine\GameApp.h" />
-    <ClInclude Include="Input\KeyBoard\Keyboard_InputSystem.h" />
-    <ClInclude Include="Input\Mouse\Mouse_InputSystem.h" />
+    <ClInclude Include="Define.h" />
+    <ClInclude Include="GameApp.h" />
+    <ClInclude Include="Helper.h" />
+    <ClInclude Include="Keyboard_InputSystem.h" />
+    <ClInclude Include="Mouse_InputSystem.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Render\Renderer.h" />
-    <ClInclude Include="Time\TimeSystem.h" />
-    <ClInclude Include="Tool\TSingleton.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="TimeSystem.h" />
+    <ClInclude Include="TSingleton.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\GameApp.cpp" />
-    <ClCompile Include="Input\KeyBoard\Keyboard_InputSystem.cpp" />
-    <ClCompile Include="Input\Mouse\Mouse_InputSystem.cpp" />
+    <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="Helper.cpp" />
+    <ClCompile Include="Keyboard_InputSystem.cpp" />
+    <ClCompile Include="Mouse_InputSystem.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Render\Renderer.cpp" />
-    <ClCompile Include="Time\TimeSystem.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="TimeSystem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

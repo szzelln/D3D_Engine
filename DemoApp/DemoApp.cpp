@@ -1,9 +1,9 @@
 ﻿// DemoApp.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 
-#include "../framework.h"
+#include "framework.h"
 #include "DemoApp.h"
-#include "../../GameApp_v01/Time/TimeSystem.h"
-#include "../../GameApp_v01/Input/KeyBoard/Keyboard_InputSystem.h"
+#include "../GameApp_v01/TimeSystem.h"
+#include "../GameApp_v01/Keyboard_InputSystem.h"
 
 
 DemoApp::DemoApp(HINSTANCE hInstance) : GameApp::GameApp(hInstance)

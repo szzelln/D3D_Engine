@@ -1,10 +1,10 @@
 // GameApp.cpp : 정적 라이브러리를 위한 함수를 정의합니다.
 //
-#include "../pch.h"
+#include "pch.h"
 #include "GameApp.h"
-#include "../Input/KeyBoard/Keyboard_InputSystem.h"
-#include "../Input/Mouse/Mouse_InputSystem.h"
-#include "../Time/TimeSystem.h"
+#include "Keyboard_InputSystem.h"
+#include "Mouse_InputSystem.h"
+#include "TimeSystem.h"
 
 
 HWND GameApp::s_hWnd = nullptr;
@@ -87,6 +87,7 @@ bool GameApp::Initialize(UINT _width, UINT _height)
 
 	// Renderer 초기화
 	m_Renderer.Init();
+	m_Renderer.InitScene();
 
 	//TimeSystem
 	TimeSystem::GetInstance()->Init();
@@ -149,6 +150,7 @@ void GameApp::Render()
 	m_Renderer.RenderBegin();
 
 	// 렌더
+	m_Renderer.RenderScene();
 
 	//렌더 끝
 	m_Renderer.RenderEnd();

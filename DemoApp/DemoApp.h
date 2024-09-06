@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "../../GameApp_v01/Engine/GameApp.h"
+#include "resource.h"
+#include "../GameApp_v01/GameApp.h"
 
 class DemoApp : public GameApp
 {

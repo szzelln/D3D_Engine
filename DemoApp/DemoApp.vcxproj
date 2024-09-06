@@ -128,24 +128,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="System\DemoApp.h" />
+    <ClInclude Include="DemoApp.h" />
     <ClInclude Include="framework.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="System\DemoApp.cpp" />
+    <ClCompile Include="DemoApp.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="etc\DemoApp.rc" />
+    <ResourceCompile Include="DemoApp.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="etc\DemoApp.ico" />
-    <Image Include="etc\small.ico" />
+    <Image Include="DemoApp.ico" />
+    <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameApp_v01\GameApp_v01.vcxproj">
       <Project>{fab7e7c0-36a4-4c5c-bf14-23445e4c17ef}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="BasicPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="BasicVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

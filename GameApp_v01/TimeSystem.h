@@ -1,5 +1,5 @@
 #pragma once
-#include "../Tool/TSingleton.h"
+#include "TSingleton.h"
 
 // 게임 내의 모든 객체가 동일한 시간 흐름을 참조해야 되기 때문에 싱글톤 패턴 사용
 

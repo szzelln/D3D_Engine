@@ -1,4 +1,4 @@
-#include "../../pch.h"
+#include "pch.h"
 #include "Keyboard_InputSystem.h"
 
 void Keyboard_InputSystem::Init()
